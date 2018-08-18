@@ -81,6 +81,44 @@ describe("HttpConnector", () => {
         timeout: 1500,
       })
     })
+
+    it("removes original headers if instructed to do so", async () => {
+      const transactionId = "abc-123-def"
+
+      Object.assign(this.opts, {
+        name: "serviceName",
+        secure: true,
+        hostname: "api.example.com",
+        pathname: "/v2/",
+        headers: {
+          foo: "bar",
+        },
+        transactionId,
+      })
+
+      this.client = jest.fn()
+
+      const httpConnector = new HttpConnector(this.opts, this.client)
+
+      await httpConnector.get(
+        {
+          url: "/users",
+          headers: {
+            authorization: "Bearer __token",
+          },
+        },
+        true,
+      )
+
+      expect(this.client).toHaveBeenCalledWith({
+        baseUrl: "https://api.example.com/v2/",
+        url: "/users",
+        headers: {
+          authorization: "Bearer __token",
+        },
+        method: "GET",
+      })
+    })
   })
 
   describe("post", () => {
@@ -95,6 +133,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
+        timeout: 1500,
         transactionId,
       })
 
@@ -123,6 +162,51 @@ describe("HttpConnector", () => {
         body: {
           name: "John Doe",
         },
+        timeout: 1500,
+      })
+    })
+
+    it("removes original headers if instructed to do so", async () => {
+      const transactionId = "abc-123-def"
+
+      Object.assign(this.opts, {
+        name: "serviceName",
+        secure: false,
+        hostname: "api.example.com",
+        pathname: "/v2/",
+        headers: {
+          foo: "bar",
+        },
+        transactionId,
+      })
+
+      this.client = jest.fn()
+
+      const httpConnector = new HttpConnector(this.opts, this.client)
+
+      await httpConnector.post(
+        {
+          url: "/users",
+          headers: {
+            authorization: "Bearer __token",
+          },
+          body: {
+            name: "John Doe",
+          },
+        },
+        true,
+      )
+
+      expect(this.client).toHaveBeenCalledWith({
+        baseUrl: "http://api.example.com/v2/",
+        url: "/users",
+        headers: {
+          authorization: "Bearer __token",
+        },
+        method: "POST",
+        body: {
+          name: "John Doe",
+        },
       })
     })
   })
@@ -139,6 +223,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
+        timeout: 300,
         transactionId,
       })
 
@@ -164,6 +249,141 @@ describe("HttpConnector", () => {
           authorization: "Bearer __token",
         },
         method: "PUT",
+        body: {
+          name: "John Doe",
+        },
+        timeout: 300,
+      })
+    })
+
+    it("removes original headers if instructed to do so", async () => {
+      const transactionId = "abc-123-def"
+
+      Object.assign(this.opts, {
+        name: "serviceName",
+        secure: false,
+        hostname: "api.example.com",
+        pathname: "/v2/",
+        headers: {
+          foo: "bar",
+        },
+        transactionId,
+      })
+
+      this.client = jest.fn()
+
+      const httpConnector = new HttpConnector(this.opts, this.client)
+
+      await httpConnector.put(
+        {
+          url: "/users",
+          headers: {
+            authorization: "Bearer __token",
+          },
+          body: {
+            name: "John Doe",
+          },
+        },
+        true,
+      )
+
+      expect(this.client).toHaveBeenCalledWith({
+        baseUrl: "http://api.example.com/v2/",
+        url: "/users",
+        headers: {
+          authorization: "Bearer __token",
+        },
+        method: "PUT",
+        body: {
+          name: "John Doe",
+        },
+      })
+    })
+  })
+
+  describe("delete", () => {
+    it("calls the http client, passing opts", async () => {
+      const transactionId = "abc-123-def"
+
+      Object.assign(this.opts, {
+        name: "serviceName",
+        secure: false,
+        hostname: "api.example.com",
+        pathname: "/v2/",
+        headers: {
+          foo: "bar",
+        },
+        timeout: 0,
+        transactionId,
+      })
+
+      this.client = jest.fn()
+
+      const httpConnector = new HttpConnector(this.opts, this.client)
+
+      await httpConnector.delete({
+        url: "/users",
+        headers: {
+          authorization: "Bearer __token",
+        },
+        body: {
+          name: "John Doe",
+        },
+      })
+
+      expect(this.client).toHaveBeenCalledWith({
+        baseUrl: "http://api.example.com/v2/",
+        url: "/users",
+        headers: {
+          foo: "bar",
+          authorization: "Bearer __token",
+        },
+        method: "DELETE",
+        body: {
+          name: "John Doe",
+        },
+        timeout: 0,
+      })
+    })
+
+    it("removes original headers if instructed to do so", async () => {
+      const transactionId = "abc-123-def"
+
+      Object.assign(this.opts, {
+        name: "serviceName",
+        secure: false,
+        hostname: "api.example.com",
+        pathname: "/v2/",
+        headers: {
+          foo: "bar",
+        },
+        transactionId,
+      })
+
+      this.client = jest.fn()
+
+      const httpConnector = new HttpConnector(this.opts, this.client)
+
+      await httpConnector.delete(
+        {
+          url: "/users",
+          headers: {
+            authorization: "Bearer __token",
+          },
+          body: {
+            name: "John Doe",
+          },
+        },
+        true,
+      )
+
+      expect(this.client).toHaveBeenCalledWith({
+        baseUrl: "http://api.example.com/v2/",
+        url: "/users",
+        headers: {
+          authorization: "Bearer __token",
+        },
+        method: "DELETE",
         body: {
           name: "John Doe",
         },

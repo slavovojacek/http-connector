@@ -49,39 +49,73 @@ class HttpConnector<H> {
     }
   }
 
-  healthcheck = async <T = unknown>(): Promise<T> => {
+  healthcheck = async <T>(): Promise<T> => {
     throw new Error(`Healthcheck endpoint must be configured for ${this.name}`)
   }
 
-  get = <T = unknown>(opts: request.Options): Promise<T> => {
-    return this.http<T>({
-      method: "GET",
-      ...opts,
-    })
+  get = <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean = false,
+  ): Promise<T> => {
+    return this.http<T>(
+      {
+        method: "GET",
+        ...opts,
+      },
+      removeOriginalHeaders,
+    )
   }
 
-  post = <T = unknown>(opts: request.Options): Promise<T> => {
-    return this.http<T>({
-      method: "POST",
-      ...opts,
-    })
+  post = <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean = false,
+  ): Promise<T> => {
+    return this.http<T>(
+      {
+        method: "POST",
+        ...opts,
+      },
+      removeOriginalHeaders,
+    )
   }
 
-  put = <T = unknown>(opts: request.Options): Promise<T> => {
-    return this.http<T>({
-      method: "PUT",
-      ...opts,
-    })
+  put = <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean = false,
+  ): Promise<T> => {
+    return this.http<T>(
+      {
+        method: "PUT",
+        ...opts,
+      },
+      removeOriginalHeaders,
+    )
   }
 
-  private http = async <T>(opts: request.Options): Promise<T> => {
+  delete = <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean = false,
+  ): Promise<T> => {
+    return this.http<T>(
+      {
+        method: "DELETE",
+        ...opts,
+      },
+      removeOriginalHeaders,
+    )
+  }
+
+  private http = async <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean,
+  ): Promise<T> => {
     const { headers, ...rest } = opts
 
     const options: request.Options = {
       ...this.options,
       ...rest,
       headers: {
-        ...this.options.headers,
+        ...(isTrue(removeOriginalHeaders) ? {} : this.options.headers),
         ...headers,
       },
     }
