@@ -1,11 +1,7 @@
 import { RequestAPI, RequiredUriUrl } from "request"
 import { RequestPromise, RequestPromiseOptions } from "request-promise-native"
 
-export interface Headers {
-  [k: string]: string
-}
-
-export interface Opts<T = Headers> {
+export interface Opts<T> {
   name: string
   port?: number
   secure: boolean

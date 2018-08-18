@@ -9,13 +9,13 @@ const httpClient: HttpClient = request.defaults({
   json: true,
 })
 
-class HttpConnector {
+class HttpConnector<H> {
   name: string
   client: any
   transactionId: string
   options: request.Options
 
-  constructor(opts: Opts, client: HttpClient = httpClient) {
+  constructor(opts: Opts<H>, client: HttpClient = httpClient) {
     const {
       name,
       port,
