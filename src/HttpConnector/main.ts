@@ -92,6 +92,19 @@ class HttpConnector<H> {
     )
   }
 
+  patch = <T>(
+    opts: request.Options,
+    removeOriginalHeaders: boolean = false,
+  ): Promise<T> => {
+    return this.http<T>(
+      {
+        method: "PATCH",
+        ...opts,
+      },
+      removeOriginalHeaders,
+    )
+  }
+
   delete = <T>(
     opts: request.Options,
     removeOriginalHeaders: boolean = false,
