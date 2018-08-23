@@ -16,14 +16,14 @@ describe("ConcurrentQueue", () => {
     const batchIds = new Set()
 
     const collectResults = new Promise((resolve, _reject) => {
-      const results: Array<number> = []
+      const _results: Array<number> = []
 
       cQ.on("complete", ({ result, batchId }) => {
-        results.push(result as number) // @TODO look at conditional types
+        _results.push(result as number) // @TODO look at conditional types
         batchIds.add(batchId)
 
-        if (isEqual(results.length, numberOfItems)) {
-          resolve(results)
+        if (isEqual(_results.length, numberOfItems)) {
+          resolve(_results)
         }
       })
     })
@@ -45,14 +45,14 @@ describe("ConcurrentQueue", () => {
     const batchIds = new Set()
 
     const collectResults = new Promise((resolve, _reject) => {
-      const results: Array<number> = []
+      const _results: Array<number> = []
 
       cQ.on("complete", ({ result, batchId }) => {
-        results.push(result as number) // @TODO look at conditional types
+        _results.push(result as number) // @TODO look at conditional types
         batchIds.add(batchId)
 
-        if (isEqual(results.length, numberOfItems)) {
-          resolve(results)
+        if (isEqual(_results.length, numberOfItems)) {
+          resolve(_results)
         }
       })
     })
@@ -76,14 +76,14 @@ describe("ConcurrentQueue", () => {
     const batchIds = new Set()
 
     const collectResults = new Promise((resolve, _reject) => {
-      const results: Array<number> = []
+      const _results: Array<number> = []
 
       cQ.on("complete", ({ result, batchId }) => {
-        results.push(result as number) // @TODO look at conditional types
+        _results.push(result as number) // @TODO look at conditional types
         batchIds.add(batchId)
 
-        if (isEqual(results.length, numberOfItems)) {
-          resolve(results)
+        if (isEqual(_results.length, numberOfItems)) {
+          resolve(_results)
         }
       })
     })
@@ -115,23 +115,23 @@ describe("ConcurrentQueue", () => {
     const batchIds = new Set()
 
     const collectResults: Promise<Array<Result>> = new Promise((resolve, _reject) => {
-      const results: Array<Result> = []
+      const _results: Array<Result> = []
 
       cQ.on("complete", ({ result, batchId }) => {
-        results.push({ type: "ok", value: result })
+        _results.push({ type: "ok", value: result })
         batchIds.add(batchId)
 
-        if (isEqual(results.length, numberOfItems)) {
-          resolve(results)
+        if (isEqual(_results.length, numberOfItems)) {
+          resolve(_results)
         }
       })
 
       cQ.on("error", ({ error, batchId }) => {
-        results.push({ type: "err", value: error })
+        _results.push({ type: "err", value: error })
         batchIds.add(batchId)
 
-        if (isEqual(results.length, numberOfItems)) {
-          resolve(results)
+        if (isEqual(_results.length, numberOfItems)) {
+          resolve(_results)
         }
       })
     })
