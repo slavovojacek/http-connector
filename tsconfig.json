@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "lib": [
-      "ES2018"
+      "ESNext"
     ],
     "locale": "en",
     "module": "commonjs",
