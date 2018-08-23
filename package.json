@@ -1,6 +1,6 @@
 {
   "name": "@openmaths/http-connector",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "An HTTP Connector used for inter-service communication",
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
