@@ -2,20 +2,22 @@ import { HttpConnectorError } from "./helpers"
 import HttpConnector from "./main"
 
 describe("HttpConnector", () => {
+  const self: any = {}
+
   beforeEach(() => {
-    this.opts = {}
-    this.client = {}
+    self.opts = {}
+    self.client = {}
   })
 
   afterEach(() => {
-    this.opts = null
-    this.client = null
+    self.opts = null
+    self.client = null
   })
 
   it("constructs base options correctly", () => {
     const transactionId = "abc-123-def"
 
-    Object.assign(this.opts, {
+    Object.assign(self.opts, {
       name: "serviceName",
       secure: true,
       hostname: "api.example.com",
@@ -26,9 +28,9 @@ describe("HttpConnector", () => {
       transactionId,
     })
 
-    this.client = "MockClient"
+    self.client = "MockClient"
 
-    const httpConnector = new HttpConnector(this.opts, this.client)
+    const httpConnector = new HttpConnector(self.opts, self.client)
 
     const { name, client, transactionId: txId, options } = httpConnector
 
@@ -37,7 +39,7 @@ describe("HttpConnector", () => {
     expect(txId).toEqual(transactionId)
     expect(options).toEqual({
       baseUrl: "https://api.example.com:4200/v2/",
-      headers: this.opts.headers,
+      headers: self.opts.headers,
       url: "",
       timeout: 750,
     })
@@ -47,7 +49,7 @@ describe("HttpConnector", () => {
     it("calls the http client, passing opts", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: true,
         hostname: "api.example.com",
@@ -59,9 +61,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.get({
         url: "/users",
@@ -70,7 +72,7 @@ describe("HttpConnector", () => {
         },
       })
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "https://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -85,7 +87,7 @@ describe("HttpConnector", () => {
     it("removes original headers if instructed to do so", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: true,
         hostname: "api.example.com",
@@ -96,9 +98,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.get(
         {
@@ -110,7 +112,7 @@ describe("HttpConnector", () => {
         true,
       )
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "https://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -125,7 +127,7 @@ describe("HttpConnector", () => {
     it("calls the http client, passing opts", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -137,9 +139,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.post({
         url: "/users",
@@ -151,7 +153,7 @@ describe("HttpConnector", () => {
         },
       })
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -169,7 +171,7 @@ describe("HttpConnector", () => {
     it("removes original headers if instructed to do so", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -180,9 +182,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.post(
         {
@@ -197,7 +199,7 @@ describe("HttpConnector", () => {
         true,
       )
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -215,7 +217,7 @@ describe("HttpConnector", () => {
     it("calls the http client, passing opts", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -227,9 +229,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.put({
         url: "/users",
@@ -241,7 +243,7 @@ describe("HttpConnector", () => {
         },
       })
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -259,7 +261,7 @@ describe("HttpConnector", () => {
     it("removes original headers if instructed to do so", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -270,9 +272,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.put(
         {
@@ -287,7 +289,7 @@ describe("HttpConnector", () => {
         true,
       )
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -305,7 +307,7 @@ describe("HttpConnector", () => {
     it("calls the http client, passing opts", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -317,9 +319,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.patch({
         url: "/users",
@@ -331,7 +333,7 @@ describe("HttpConnector", () => {
         },
       })
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -349,7 +351,7 @@ describe("HttpConnector", () => {
     it("removes original headers if instructed to do so", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -360,9 +362,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.patch(
         {
@@ -377,7 +379,7 @@ describe("HttpConnector", () => {
         true,
       )
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -395,7 +397,7 @@ describe("HttpConnector", () => {
     it("calls the http client, passing opts", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -407,9 +409,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.delete({
         url: "/users",
@@ -421,7 +423,7 @@ describe("HttpConnector", () => {
         },
       })
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -439,7 +441,7 @@ describe("HttpConnector", () => {
     it("removes original headers if instructed to do so", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -450,9 +452,9 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn()
+      self.client = jest.fn()
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       await httpConnector.delete(
         {
@@ -467,7 +469,7 @@ describe("HttpConnector", () => {
         true,
       )
 
-      expect(this.client).toHaveBeenCalledWith({
+      expect(self.client).toHaveBeenCalledWith({
         baseUrl: "http://api.example.com/v2/",
         url: "/users",
         headers: {
@@ -485,7 +487,7 @@ describe("HttpConnector", () => {
     it("throws HttpConnectorError on error, captures the right stacktrace", async () => {
       const transactionId = "abc-123-def"
 
-      Object.assign(this.opts, {
+      Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
@@ -493,11 +495,11 @@ describe("HttpConnector", () => {
         transactionId,
       })
 
-      this.client = jest.fn().mockImplementation(() => {
+      self.client = jest.fn().mockImplementation(() => {
         throw new Error("Something went wrong")
       })
 
-      const httpConnector = new HttpConnector(this.opts, this.client)
+      const httpConnector = new HttpConnector(self.opts, self.client)
 
       try {
         await httpConnector.get({
