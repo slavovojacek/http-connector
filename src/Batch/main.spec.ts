@@ -1,10 +1,5 @@
-import { isEqual, isInteger, isNonEmptyString } from "@openmaths/utils"
+import { fill, isEqual, isInteger, isNonEmptyString } from "@openmaths/utils"
 import ConcurrentQueue from "./main"
-
-// @TODO add to utils
-function fill(numberOfItems: number): Array<number> {
-  return Array.from(Array(numberOfItems).keys())
-}
 
 describe("ConcurrentQueue", () => {
   it("batches operations", async () => {
