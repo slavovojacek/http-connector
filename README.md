@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/OpenMaths/mod-http-connector.svg?style=svg)](https://circleci.com/gh/OpenMaths/mod-http-connector)
-[![codecov](https://codecov.io/gh/OpenMaths/mod-http-connector/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenMaths/mod-http-connector)
-[![npm version](https://img.shields.io/npm/v/@openmaths/http-connector.svg)](https://www.npmjs.com/package/@openmaths/http-connector)
+[![CircleCI](https://circleci.com/gh/litchi-io/http-connector.svg?style=svg)](https://circleci.com/gh/litchi-io/http-connector)
+[![codecov](https://codecov.io/gh/litchi-io/http-connector/branch/master/graph/badge.svg)](https://codecov.io/gh/litchi-io/http-connector)
+[![npm version](https://img.shields.io/npm/v/@usefultools/http-connector.svg)](https://www.npmjs.com/package/@usefultools/http-connector)
 
 # An HTTP Connector used for inter-service communication
 
