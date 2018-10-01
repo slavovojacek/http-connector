@@ -3,7 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/@usefultools/http-connector.svg)](https://www.npmjs.com/package/@usefultools/http-connector)
 [![Security Responsible Disclosure](https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg)](https://github.com/litchi-io/http-connector/blob/master/SECURITY.md)
 
-# An HTTP Connector used for inter-service communication
+# HTTP Connector
+
+A connector for inter-service communication with support for batching
 
 ## Prereqs
 
@@ -24,4 +26,14 @@
 
 ## Contributing
 
-Please contact slavomirvojacek@gmail.com
+If you have comments, complaints, or ideas for improvements, feel free to open an issue or a pull request! See [Contributing guide](./CONTRIBUTING.md) for details about project setup, testing, etc.
+
+If you make or are considering making an app using WatermelonDB, please let us know!
+
+## Author and license
+
+This library was created by [@LITCHI.IO](https://github.com/litchi-io). Main author and maintainer is [Slavo Vojacek](https://github.com/slavovojacek).
+
+Contributors: [Slavo Vojacek](https://github.com/slavovojacek)
+
+`@usefultools/http-connector` is available under the ISC license. See the [LICENSE file](./LICENSE.txt) for more info.

@@ -1,4 +1,4 @@
-import { fill, isEqual, isInteger, isNonEmptyString } from "@openmaths/utils"
+import { fill, isEqual, isInteger, isNonEmptyString } from "@usefultools/utils"
 import ConcurrentQueue from "./main"
 
 describe("ConcurrentQueue", () => {

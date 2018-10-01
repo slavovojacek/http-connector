@@ -5,7 +5,7 @@ import {
   isFunction,
   isMissing,
   isPresent,
-} from "@openmaths/utils"
+} from "@usefultools/utils"
 import { Opts, QueueItem } from "./types"
 
 class ConcurrentQueue<T> {

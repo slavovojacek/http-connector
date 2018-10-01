@@ -1,4 +1,4 @@
-import { isNonNegativeInteger, isTrue } from "@openmaths/utils"
+import { isNonNegativeInteger, isTrue } from "@usefultools/utils"
 import * as request from "request-promise-native"
 import * as url from "url"
 
