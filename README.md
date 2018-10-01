@@ -8,6 +8,17 @@
 
 A connector for inter-service communication with support for batching
 
+## Prereqs & Install
+
+* Node >=9.10.0
+* npm >=6.1.0
+
+Please note that the **TypeScript target is ES6**.
+
+```sh
+npm install @usefultools/http-connector
+```
+
 ## Prereqs
 
 * Node >= 9.10.0
