@@ -1,7 +1,7 @@
 {
   "name": "@usefultools/http-connector",
   "version": "2.3.0",
-  "description": "An HTTP Connector used for inter-service communication",
+  "description": "A connector for inter-service communication with support for batching",
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
   "engines": {
@@ -13,25 +13,25 @@
     "test": "make test"
   },
   "dependencies": {
-    "@openmaths/utils": "^4.0.2",
-    "@threestup/monads": "^1.0.4",
+    "@threestup/monads": "^1.1.0",
+    "@usefultools/utils": "^6.0.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "tslib": "^1.9.3",
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "@types/node": "^10.5.8",
+    "@types/jest": "^23.3.2",
+    "@types/node": "^10.11.3",
     "@types/request": "^2.47.1",
     "@types/request-promise-native": "^1.0.15",
-    "jest": "^23.5.0",
-    "prettier": "^1.14.2",
+    "jest": "^23.6.0",
+    "prettier": "^1.14.3",
     "prettier-standard": "^8.0.1",
-    "ts-jest": "^23.1.4",
+    "ts-jest": "^23.10.3",
     "tslint": "^5.11.0",
-    "tslint-config-security": "^1.4.0",
-    "typescript": "^3.0.1"
+    "tslint-config-security": "^1.5.0",
+    "typescript": "^3.1.1"
   },
   "repository": {
     "type": "git",
