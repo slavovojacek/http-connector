@@ -1,6 +1,6 @@
 {
   "name": "@usefultools/http-connector",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A connector for inter-service communication with support for batching",
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
