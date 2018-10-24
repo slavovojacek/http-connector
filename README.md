@@ -17,6 +17,7 @@ Please note that the **TypeScript target is ES6**.
 
 ```sh
 npm install @usefultools/http-connector
+npm install @types/request-promise-native --save-dev # for TypeScript projects
 ```
 
 ## Prereqs
