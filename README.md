@@ -6,7 +6,7 @@
 
 # HTTP Connector
 
-A connector for inter-service communication with support for batching
+A connector for inter-service communication with support for batching.
 
 ## Prereqs & Install
 
@@ -40,8 +40,6 @@ npm install @types/request-promise-native --save-dev # for TypeScript projects
 ## Contributing
 
 If you have comments, complaints, or ideas for improvements, feel free to open an issue or a pull request! See [Contributing guide](./CONTRIBUTING.md) for details about project setup, testing, etc.
-
-If you make or are considering making an app using WatermelonDB, please let us know!
 
 ## Author and license
 
