@@ -15,7 +15,7 @@ describe("HttpConnector", () => {
   })
 
   it("constructs base options correctly", () => {
-    const transactionId = "abc-123-def"
+    const correlationId = "abc-123-def"
 
     Object.assign(self.opts, {
       name: "serviceName",
@@ -25,18 +25,18 @@ describe("HttpConnector", () => {
       pathname: "/v2/",
       headers: {},
       timeout: 750,
-      transactionId,
+      correlationId,
     })
 
     self.client = "MockClient"
 
     const httpConnector = new HttpConnector(self.opts, self.client)
 
-    const { name, client, transactionId: txId, options } = httpConnector
+    const { name, client, correlationId: txId, options } = httpConnector
 
     expect(name).toEqual("serviceName")
     expect(client).toEqual("MockClient")
-    expect(txId).toEqual(transactionId)
+    expect(txId).toEqual(correlationId)
     expect(options).toEqual({
       baseUrl: "https://api.example.com:4200/v2/",
       headers: self.opts.headers,
@@ -47,7 +47,7 @@ describe("HttpConnector", () => {
 
   describe("get", () => {
     it("calls the http client, passing opts", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -58,7 +58,7 @@ describe("HttpConnector", () => {
           foo: "bar",
         },
         timeout: 1500,
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -85,7 +85,7 @@ describe("HttpConnector", () => {
     })
 
     it("removes original headers if instructed to do so", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -95,7 +95,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -125,7 +125,7 @@ describe("HttpConnector", () => {
 
   describe("post", () => {
     it("calls the http client, passing opts", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -136,7 +136,7 @@ describe("HttpConnector", () => {
           foo: "bar",
         },
         timeout: 1500,
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -169,7 +169,7 @@ describe("HttpConnector", () => {
     })
 
     it("removes original headers if instructed to do so", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -179,7 +179,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -215,7 +215,7 @@ describe("HttpConnector", () => {
 
   describe("put", () => {
     it("calls the http client, passing opts", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -226,7 +226,7 @@ describe("HttpConnector", () => {
           foo: "bar",
         },
         timeout: 300,
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -259,7 +259,7 @@ describe("HttpConnector", () => {
     })
 
     it("removes original headers if instructed to do so", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -269,7 +269,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -305,7 +305,7 @@ describe("HttpConnector", () => {
 
   describe("patch", () => {
     it("calls the http client, passing opts", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -316,7 +316,7 @@ describe("HttpConnector", () => {
           foo: "bar",
         },
         timeout: 150,
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -349,7 +349,7 @@ describe("HttpConnector", () => {
     })
 
     it("removes original headers if instructed to do so", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -359,7 +359,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -395,7 +395,7 @@ describe("HttpConnector", () => {
 
   describe("delete", () => {
     it("calls the http client, passing opts", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -406,7 +406,7 @@ describe("HttpConnector", () => {
           foo: "bar",
         },
         timeout: 0,
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -439,7 +439,7 @@ describe("HttpConnector", () => {
     })
 
     it("removes original headers if instructed to do so", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
@@ -449,7 +449,7 @@ describe("HttpConnector", () => {
         headers: {
           foo: "bar",
         },
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn()
@@ -485,14 +485,14 @@ describe("HttpConnector", () => {
 
   describe("http", () => {
     it("throws HttpConnectorError on error, captures the right stacktrace", async () => {
-      const transactionId = "abc-123-def"
+      const correlationId = "abc-123-def"
 
       Object.assign(self.opts, {
         name: "serviceName",
         secure: false,
         hostname: "api.example.com",
         headers: {},
-        transactionId,
+        correlationId,
       })
 
       self.client = jest.fn().mockImplementation(() => {

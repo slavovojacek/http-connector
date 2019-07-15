@@ -12,7 +12,7 @@ const httpClient: HttpClient = request.defaults({
 class HttpConnector<H> {
   name: string
   client: any
-  transactionId: string
+  correlationId: string
   options: request.Options
 
   constructor(opts: Opts<H>, client: HttpClient = httpClient) {
@@ -24,7 +24,7 @@ class HttpConnector<H> {
       pathname,
       headers,
       timeout,
-      transactionId,
+      correlationId,
     } = opts
 
     const baseUrl = url.format({
@@ -37,7 +37,7 @@ class HttpConnector<H> {
 
     this.name = name
     this.client = client
-    this.transactionId = transactionId
+    this.correlationId = correlationId
     this.options = {
       baseUrl,
       headers,

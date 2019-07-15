@@ -9,7 +9,7 @@ export interface Opts<T> {
   pathname?: string
   headers: T
   timeout?: number
-  transactionId: string
+  correlationId: string
 }
 
 export type HttpClient = RequestAPI<
