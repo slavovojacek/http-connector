@@ -3,10 +3,7 @@ import { RequestPromise, RequestPromiseOptions } from "request-promise-native"
 
 export interface Opts<T> {
   name: string
-  port?: number
-  secure: boolean
-  hostname: string
-  pathname?: string
+  baseUrl: string
   headers: T
   timeout?: number
   correlationId: string

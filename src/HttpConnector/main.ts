@@ -1,6 +1,5 @@
 import { isNonNegativeInteger, isTrue } from "@usefultools/utils"
 import * as request from "request-promise-native"
-import * as url from "url"
 
 import { HttpConnectorError } from "./helpers"
 import { HttpClient, Opts } from "./types"
@@ -16,24 +15,7 @@ class HttpConnector<H> {
   options: request.Options
 
   constructor(opts: Opts<H>, client: HttpClient = httpClient) {
-    const {
-      name,
-      port,
-      secure,
-      hostname,
-      pathname,
-      headers,
-      timeout,
-      correlationId,
-    } = opts
-
-    const baseUrl = url.format({
-      port,
-      protocol: isTrue(secure) ? "https" : "http",
-      hostname,
-      pathname,
-      slashes: true,
-    })
+    const { name, baseUrl, headers, timeout, correlationId } = opts
 
     this.name = name
     this.client = client

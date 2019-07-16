@@ -19,10 +19,7 @@ describe("HttpConnector", () => {
 
     Object.assign(self.opts, {
       name: "serviceName",
-      secure: true,
-      hostname: "api.example.com",
-      port: 4200,
-      pathname: "/v2/",
+      baseUrl: "https://api.example.com:4200/v2/",
       headers: {},
       timeout: 750,
       correlationId,
@@ -51,9 +48,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: true,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "https://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -89,9 +84,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: true,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "https://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -129,9 +122,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -173,9 +164,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -219,9 +208,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -263,9 +250,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -309,9 +294,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -353,9 +336,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -399,9 +380,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -443,9 +422,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
-        pathname: "/v2/",
+        baseUrl: "http://api.example.com/v2/",
         headers: {
           foo: "bar",
         },
@@ -489,8 +466,7 @@ describe("HttpConnector", () => {
 
       Object.assign(self.opts, {
         name: "serviceName",
-        secure: false,
-        hostname: "api.example.com",
+        baseUrl: "http://api.example.com/",
         headers: {},
         correlationId,
       })
