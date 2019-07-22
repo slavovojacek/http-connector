@@ -1,4 +1,3 @@
-import { HttpConnectorError } from "./helpers"
 import HttpConnector from "./main"
 
 describe("HttpConnector", () => {
@@ -482,8 +481,8 @@ describe("HttpConnector", () => {
           url: "/users",
         })
       } catch (err) {
-        expect(err instanceof HttpConnectorError).toEqual(true)
-        expect(err.name).toEqual("HttpConnectorError")
+        expect(err instanceof Error).toEqual(true)
+        expect(err.name).toEqual("Error")
         expect(err.message).toMatch(/Something went wrong/)
       }
     })

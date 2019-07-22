@@ -1,7 +1,5 @@
 import { isNonNegativeInteger, isTrue } from "@usefultools/utils"
 import * as request from "request-promise-native"
-
-import { HttpConnectorError } from "./helpers"
 import { HttpClient, Opts } from "./types"
 
 const httpClient: HttpClient = request.defaults({
@@ -115,11 +113,7 @@ class HttpConnector<H> {
       },
     }
 
-    try {
-      return await this.client(options)
-    } catch (err) {
-      throw new HttpConnectorError(err)
-    }
+    return this.client(options)
   }
 }
 
